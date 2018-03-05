@@ -4,16 +4,36 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+  # region Movement Variables
 
-    public float speed = 0.2f;
+
+    public float speed = 0.1f;
     [SerializeField] float travel;
-
+    public float maxSpeed = 2;
+    public float travelMultiuplier = 0.2f;
+    public float slowOut = 0.95f;
+  # endregion
     void Update()
     {
 
-        
-        
 
+        if (Input.GetMouseButton(1))
+        {
+            transform.localScale +=new Vector3(-0.1f, -0.1f, 0);
+        }
+
+        // distance to be traveled
+        if (Input.GetMouseButton(0))
+        {
+            travel += travelMultiuplier;
+        }
+
+        // lose condition
+        if (transform.localScale.y <= 0)
+        {
+            Debug.Log("bene Benedikt Kirchmeier");
+        }
+        
         /*
          Vector3 mousePos = Input.mousePosition;
 
@@ -32,11 +52,11 @@ public class PlayerMove : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
         */
     }
-
+   
 
     private void FixedUpdate()
     {
-
+        
         Vector3 mousePos = Input.mousePosition;
         
         mousePos.x -= Screen.width / 2;
@@ -45,15 +65,16 @@ public class PlayerMove : MonoBehaviour
         mousePos += transform.position;
         var angle = Vector3.Angle(mousePos, Vector3.up);
 
-        if (travel <= 0)
+        if (travel <= 0.1)
         {
             travel = 0;
         }
 
-        if (Input.GetMouseButton(0))
+        if (travel >= 4)
         {
-            travel += 0.4f;
+            travel = maxSpeed;
         }
+       
 
         for (int i = 0; i < travel; i++)
         {
@@ -68,7 +89,7 @@ public class PlayerMove : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 180, angle);
 
         Debug.Log(angle);
-        travel -= 0.2f;
+        travel *= slowOut;
 
     }
 
