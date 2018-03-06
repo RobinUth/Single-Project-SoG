@@ -13,13 +13,15 @@ public class PlayerMove : MonoBehaviour
     public float travelMultiuplier = 0.2f;
     public float slowOut = 0.95f;
   # endregion
+
+
     void Update()
     {
 
 
         if (Input.GetMouseButton(1))
         {
-            transform.localScale +=new Vector3(-0.1f, -0.1f, 0);
+            transform.localScale +=new Vector3(0.1f, 0.1f, 0);
         }
 
         // distance to be traveled
@@ -88,7 +90,7 @@ public class PlayerMove : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, 180, angle);
 
-        Debug.Log(angle);
+      //  Debug.Log(angle);
         travel *= slowOut;
 
     }
