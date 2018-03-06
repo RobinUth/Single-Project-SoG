@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ENemy
   - Enemy
+  - enemy
+  - outline
   layers:
   - Default
   - TransparentFX

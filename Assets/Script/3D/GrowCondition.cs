@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class GrowCondition : MonoBehaviour
 {
+    GameObject outline;
+    GameObject enemy;
     public float growScale   = 0.2f;
     public float shrinkScale = 0.2f;
+
+
+    private void Start()
+    {
+        outline = GameObject.FindGameObjectWithTag("outline");
+        enemy = GameObject.FindGameObjectWithTag("enemy");
+    }
 
 
     private void Update()
@@ -23,6 +32,8 @@ public class GrowCondition : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
 
+        if (enemy == true)
+       {
 
 
         if (transform.localScale.magnitude > collision.transform.localScale.magnitude)
@@ -44,6 +55,7 @@ public class GrowCondition : MonoBehaviour
             Debug.Log(collision.transform.localScale.magnitude);
 
         }
+       }
         /*
         
         Debug.LogWarning("Collision!Collision");

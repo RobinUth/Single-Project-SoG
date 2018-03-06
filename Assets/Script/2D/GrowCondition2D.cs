@@ -42,6 +42,8 @@ public class GrowCondition2D : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+         
+
          if (transform.localScale.magnitude > collision.transform.localScale.magnitude)
         {
             transform.localScale += new Vector3(growScale, growScale, 0);

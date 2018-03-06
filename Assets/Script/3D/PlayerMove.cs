@@ -12,9 +12,13 @@ public class PlayerMove : MonoBehaviour
     public float maxSpeed = 2;
     public float travelMultiuplier = 0.2f;
     public float slowOut = 0.95f;
-  # endregion
+    private Rigidbody playerRB;
+    #endregion
 
-
+    private void Awake()
+    {
+        playerRB = GetComponent<Rigidbody>();
+    }
     void Update()
     {
 
@@ -81,6 +85,7 @@ public class PlayerMove : MonoBehaviour
         for (int i = 0; i < travel; i++)
         {
             transform.position -= transform.up * speed;
+           // playerRB.velocity = Vector3.up * speed;
             
         }
 
