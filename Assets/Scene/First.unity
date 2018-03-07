@@ -133,7 +133,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773683337006606, guid: 113099644680efc4d839b5a413e438b3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4773683337006606, guid: 113099644680efc4d839b5a413e438b3, type: 2}
       propertyPath: m_LocalRotation.z
@@ -141,7 +141,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773683337006606, guid: 113099644680efc4d839b5a413e438b3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4773683337006606, guid: 113099644680efc4d839b5a413e438b3, type: 2}
       propertyPath: m_RootOrder
@@ -160,8 +160,8 @@ GameObject:
   - component: {fileID: 93090351}
   - component: {fileID: 93090352}
   m_Layer: 0
-  m_Name: Right
-  m_TagString: outline
+  m_Name: Left
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,8 +173,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 93090350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 90, z: 1}
+  m_LocalPosition: {x: -46.4, y: 0, z: 0}
+  m_LocalScale: {x: 17.5, y: 90, z: 20}
   m_Children: []
   m_Father: {fileID: 430388602}
   m_RootOrder: 1
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 250632874}
   m_Layer: 0
   m_Name: SpawnEnemy
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1248583791090630, guid: 4f94335a0062b57478eedd270c2ed7ba, type: 2}
+  enemyAmount: 10
 --- !u!4 &250632875
 Transform:
   m_ObjectHideFlags: 0
@@ -346,8 +347,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 501003318}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 30.871513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -428,8 +429,8 @@ GameObject:
   - component: {fileID: 622887708}
   - component: {fileID: 622887709}
   m_Layer: 0
-  m_Name: Left
-  m_TagString: outline
+  m_Name: Right
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,8 +442,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622887707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 90, z: 1}
+  m_LocalPosition: {x: 46.4, y: 0, z: 0}
+  m_LocalScale: {x: 17.5, y: 90, z: 20}
   m_Children: []
   m_Father: {fileID: 430388602}
   m_RootOrder: 0
@@ -470,7 +471,7 @@ GameObject:
   - component: {fileID: 776002609}
   m_Layer: 0
   m_Name: Up
-  m_TagString: outline
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,8 +483,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 776002607}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 33.5, z: 0}
-  m_LocalScale: {x: 90, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 41.7, z: 0}
+  m_LocalScale: {x: 90, y: 17.5, z: 20}
   m_Children: []
   m_Father: {fileID: 430388602}
   m_RootOrder: 2
@@ -511,7 +512,7 @@ GameObject:
   - component: {fileID: 2049346869}
   m_Layer: 0
   m_Name: Down
-  m_TagString: outline
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,8 +524,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2049346867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -33.5, z: 0}
-  m_LocalScale: {x: 90, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -41.7, z: 0}
+  m_LocalScale: {x: 90, y: 17.5, z: 20}
   m_Children: []
   m_Father: {fileID: 430388602}
   m_RootOrder: 3

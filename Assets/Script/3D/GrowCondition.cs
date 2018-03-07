@@ -32,18 +32,18 @@ public class GrowCondition : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
 
-        if (enemy == true)
-       {
+        
+       
+        //smaller
 
-
-        if (transform.localScale.magnitude > collision.transform.localScale.magnitude)
+        if (transform.localScale.magnitude > collision.transform.localScale.magnitude && enemy == true)
         {
             transform.localScale += new Vector3(growScale, growScale, 0);
             collision.transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
         }
 
         // bigger
-        if (transform.localScale.magnitude < collision.transform.localScale.magnitude)
+        if (transform.localScale.magnitude < collision.transform.localScale.magnitude && enemy == true)
         {
             transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
             collision.transform.localScale += new Vector3(growScale, growScale, 0);
@@ -55,7 +55,7 @@ public class GrowCondition : MonoBehaviour
             Debug.Log(collision.transform.localScale.magnitude);
 
         }
-       }
+       
         /*
         
         Debug.LogWarning("Collision!Collision");
@@ -71,22 +71,22 @@ public class GrowCondition : MonoBehaviour
             transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
         }
         */
-    }
-    
+    } 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         Debug.LogWarning("Collision!Trigger" + gameObject.tag);
         // smaller
 
         
-        if (transform.localScale.magnitude > other.transform.localScale.magnitude)
+        if (transform.localScale.magnitude > other.transform.localScale.magnitude && enemy == true)
         {
             transform.localScale += new Vector3(growScale, growScale, 0);
             other.transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
         }
 
         // bigger
-        if (transform.localScale.magnitude < other.transform.localScale.magnitude)
+        if (transform.localScale.magnitude < other.transform.localScale.magnitude && enemy == true)
         {
             transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
             other.transform.localScale += new Vector3(growScale, growScale, 0);
@@ -101,7 +101,7 @@ public class GrowCondition : MonoBehaviour
         
         
 
-    }
+    }*/
 
    
 

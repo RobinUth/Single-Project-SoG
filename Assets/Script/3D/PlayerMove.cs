@@ -7,17 +7,21 @@ public class PlayerMove : MonoBehaviour
   # region Movement Variables
 
 
-    public float speed = 0.1f;
+    public float speed = 0.2f;
     [SerializeField] float travel;
     public float maxSpeed = 2;
     public float travelMultiuplier = 0.2f;
     public float slowOut = 0.95f;
     private Rigidbody playerRB;
+
+    GameObject enemySpawner;
+
     #endregion
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
+        enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
     }
     void Update()
     {
@@ -32,6 +36,8 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             travel += travelMultiuplier;
+            transform.localScale -= new Vector3(travelMultiuplier/10, travelMultiuplier/10, 0);
+            enemySpawner.GetComponent<EnemySpawn>().SpawnEnemy(travelMultiuplier, travelMultiuplier, playerRB.transform.position.x+1, playerRB.transform.position.y+1);
         }
 
         // lose condition
@@ -76,6 +82,7 @@ public class PlayerMove : MonoBehaviour
             travel = 0;
         }
 
+        // 
         if (travel >= 4)
         {
             travel = maxSpeed;
@@ -93,7 +100,7 @@ public class PlayerMove : MonoBehaviour
         {
             angle = 360 - angle;
         }
-        transform.rotation = Quaternion.Euler(0, 180, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
       //  Debug.Log(angle);
         travel *= slowOut;
