@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-  # region Movement Variables
+  # region Player Movement Variables
 
 
     public float speed = 0.2f;
@@ -13,10 +13,16 @@ public class PlayerMove : MonoBehaviour
     public float travelMultiuplier = 0.2f;
     public float slowOut = 0.95f;
     private Rigidbody playerRB;
+    public Transform Player;
 
     GameObject enemySpawner;
 
     #endregion
+
+
+    // world Camera
+    
+    
 
     private void Awake()
     {
@@ -26,18 +32,18 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-
+        // testing / increasing size of player
         if (Input.GetMouseButton(1))
         {
-            transform.localScale +=new Vector3(0.1f, 0.1f, 0);
+            transform.localScale += new Vector3(0.1f, 0.1f, 0);
         }
 
         // distance to be traveled
         if (Input.GetMouseButton(0))
         {
             travel += travelMultiuplier;
-            transform.localScale -= new Vector3(travelMultiuplier/10, travelMultiuplier/10, 0);
-            enemySpawner.GetComponent<EnemySpawn>().SpawnEnemy(travelMultiuplier, travelMultiuplier, playerRB.transform.position.x+1, playerRB.transform.position.y+1);
+            transform.localScale -= new Vector3(travelMultiuplier / 10, travelMultiuplier / 10, 0);
+            enemySpawner.GetComponent<EnemySpawn>().SpawnEnemy(travel, travel, playerRB.transform.position.x, playerRB.transform.position.y);
         }
 
         // lose condition
@@ -45,29 +51,26 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("bene Benedikt Kirchmeier");
         }
-        
-        /*
-         Vector3 mousePos = Input.mousePosition;
 
-        //To make mousePos relative to center of screen
-        mousePos.x -= Screen.width / 2;
-        mousePos.y -= Screen.height / 2;
 
-        //To make mousePos relative to transform
-        mousePos += transform.position;
-        var angle = Vector3.Angle(mousePos, Vector3.up);
 
-        //For 360 degree angle
-        if (mousePos.x < 0)
-            angle = 360 - angle;
+        //transform.Rotate(new Vector3())
 
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-        */
+        //.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * speed);
+
     }
-   
 
     private void FixedUpdate()
     {
+        /*
+        var v3 = Input.mousePosition;
+        
+        v3 = Camera.main.ScreenToWorldPoint(v3);
+        Debug.Log(v3);
+        transform.LookAt(new Vector3(0, 0, v3.z));
+        */
+
+        
         
         Vector3 mousePos = Input.mousePosition;
         
@@ -77,24 +80,7 @@ public class PlayerMove : MonoBehaviour
         mousePos += transform.position;
         var angle = Vector3.Angle(mousePos, Vector3.up);
 
-        if (travel <= 0.1)
-        {
-            travel = 0;
-        }
 
-        // 
-        if (travel >= 4)
-        {
-            travel = maxSpeed;
-        }
-       
-
-        for (int i = 0; i < travel; i++)
-        {
-            transform.position -= transform.up * speed;
-           // playerRB.velocity = Vector3.up * speed;
-            
-        }
 
         if (mousePos.x > 0)
         {
@@ -102,9 +88,35 @@ public class PlayerMove : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-      //  Debug.Log(angle);
+        Debug.Log(angle);
         travel *= slowOut;
+        //Debug.Log(Vector3.Angle(new Vector3(playerRB.transform.position.x, playerRB.transform.position.y), Input.mousePosition));
+        
 
+        
+        //transform.LookAt(Player);
+
+        
+        // condition to stop player moving
+        if (travel <= 0.1)
+        {
+            travel = 0;
+        }
+
+        // condition for player not beeing too fast
+        if (travel >= 4)
+        {
+            travel = maxSpeed;
+        }
+       
+        // player movement
+        for (int i = 0; i < travel; i++)
+        {
+            transform.position -= transform.up * speed;
+
+           // playerRB.velocity = Vector3.up * speed;
+            
+        } 
     }
 
 
