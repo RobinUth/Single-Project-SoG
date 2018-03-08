@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class GrowCondition2D : MonoBehaviour
 {
     public float growScale = 0.2f;
     public float shrinkScale = 0.2f;
 
+
+    private void Start()
+    {
+       Enemy = GetComponent<Renderer>().material;
+    }
 
     private void Update()
     {
@@ -17,34 +22,16 @@ public class GrowCondition2D : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("destroyed");
         }
+
     }
-
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        
-        Debug.LogWarning("Collision!Collision");
-        // smaller
-        if (transform.localScale.x < gameObject.transform.localScale.x && transform.localScale.y < gameObject.transform.localScale.y)
-        {
-            transform.localScale += new Vector3(growScale, growScale, 0);
-        }
-
-        // bigger
-        if (transform.localScale.x > gameObject.transform.localScale.x && transform.localScale.y > gameObject.transform.localScale.y)
-        {
-            transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
-        }
-    }
-    */
+      
 
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-         
 
-         if (transform.localScale.magnitude > collision.transform.localScale.magnitude)
+
+        if (transform.localScale.magnitude > collision.transform.localScale.magnitude)
         {
             transform.localScale += new Vector3(growScale, growScale, 0);
             collision.transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
@@ -65,7 +52,7 @@ public class GrowCondition2D : MonoBehaviour
         }
 
     }
-
+}
     /*
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -95,8 +82,30 @@ public class GrowCondition2D : MonoBehaviour
 
 
 
-    } */
+    }
+    // */
+
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        
+        Debug.LogWarning("Collision!Collision");
+        // smaller
+        if (transform.localScale.x < gameObject.transform.localScale.x && transform.localScale.y < gameObject.transform.localScale.y)
+        {
+            transform.localScale += new Vector3(growScale, growScale, 0);
+        }
+
+        // bigger
+        if (transform.localScale.x > gameObject.transform.localScale.x && transform.localScale.y > gameObject.transform.localScale.y)
+        {
+            transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
+        }
+    }
+    // */
 
 
 
-}
+
+    

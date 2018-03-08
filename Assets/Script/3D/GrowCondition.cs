@@ -8,6 +8,7 @@ public class GrowCondition : MonoBehaviour
     GameObject enemy;
     public float growScale   = 0.2f;
     public float shrinkScale = 0.2f;
+    Material Enemy;
 
 
     private void Start()
@@ -24,9 +25,23 @@ public class GrowCondition : MonoBehaviour
 
 
             Destroy(gameObject);
-            Debug.Log("destroyed BENE BENEDIKT KIRCHMEIER fk u");
+            Debug.Log("destroyed BENE BENEDIKT KIRCHMEIER ");
+        }
+
+
+        // color for enemies that are bigger
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Enemy.color = Color.red;
+        }
+
+        // color for enemies that are smaller
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Enemy.color = Color.red;
         }
     }
+
 
     
     private void OnCollisionStay(Collision collision)
@@ -70,7 +85,7 @@ public class GrowCondition : MonoBehaviour
         {
             transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
         }
-        */
+        // */
     } 
     /*
     private void OnTriggerEnter(Collider other)
@@ -101,7 +116,8 @@ public class GrowCondition : MonoBehaviour
         
         
 
-    }*/
+    }
+    // */
 
    
 

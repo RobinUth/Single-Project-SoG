@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-  # region Player Movement Variables
+
+    #region Player Movement Variables
 
 
     public float speed = 0.2f;
@@ -16,19 +17,24 @@ public class PlayerMove : MonoBehaviour
     public Transform Player;
 
     GameObject enemySpawner;
+    
 
     #endregion
 
 
     // world Camera
-    
-    
+
+
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
         enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
+
+
     }
+
+
     void Update()
     {
 
@@ -43,7 +49,7 @@ public class PlayerMove : MonoBehaviour
         {
             travel += travelMultiuplier;
             transform.localScale -= new Vector3(travelMultiuplier / 10, travelMultiuplier / 10, 0);
-            enemySpawner.GetComponent<EnemySpawn>().SpawnEnemy(travel, travel, playerRB.transform.position.x, playerRB.transform.position.y);
+           // enemySpawner.GetComponent<EnemySpawn>().SpawnEnemy(travel, travel, playerRB.transform.position.x, playerRB.transform.position.y);
         }
 
         // lose condition
@@ -57,23 +63,31 @@ public class PlayerMove : MonoBehaviour
         //transform.Rotate(new Vector3())
 
         //.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * speed);
-
     }
+
 
     private void FixedUpdate()
     {
+
+        #region Angle Testing
+      
+
         /*
         var v3 = Input.mousePosition;
-        
+
         v3 = Camera.main.ScreenToWorldPoint(v3);
         Debug.Log(v3);
         transform.LookAt(new Vector3(0, 0, v3.z));
-        */
 
+        //*/
         
-        
+
+        #endregion
+
+
+
         Vector3 mousePos = Input.mousePosition;
-        
+
         mousePos.x -= Screen.width / 2;
         mousePos.y -= Screen.height / 2;
 
@@ -88,15 +102,15 @@ public class PlayerMove : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        Debug.Log(angle);
+        //Debug.Log(angle);
         travel *= slowOut;
         //Debug.Log(Vector3.Angle(new Vector3(playerRB.transform.position.x, playerRB.transform.position.y), Input.mousePosition));
-        
 
-        
+
+
         //transform.LookAt(Player);
 
-        
+
         // condition to stop player moving
         if (travel <= 0.1)
         {
@@ -108,17 +122,19 @@ public class PlayerMove : MonoBehaviour
         {
             travel = maxSpeed;
         }
-       
+
         // player movement
         for (int i = 0; i < travel; i++)
         {
             transform.position -= transform.up * speed;
 
-           // playerRB.velocity = Vector3.up * speed;
-            
-        } 
+            // playerRB.velocity = Vector3.up * speed;
+
+        }
     }
 
-
-
 }
+
+
+
+
