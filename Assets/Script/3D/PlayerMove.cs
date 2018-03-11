@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
         // lose condition
         if (transform.localScale.y <= 0)
         {
-            Debug.Log("bene Benedikt Kirchmeier");
+            Debug.Log("ben bene Benedikt Kirchmeier");
         }
 
 

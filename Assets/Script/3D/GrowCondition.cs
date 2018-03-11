@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class GrowCondition : MonoBehaviour
 {
+
+// walls and enemy to check wether the colliding object is an enemy or the wall so the player does not get absorbed by the walls
     GameObject outline;
     GameObject enemy;
-    public float growScale   = 0.2f;
+
+    // amount of gained or lost size
+    public float growScale = 0.2f;
     public float shrinkScale = 0.2f;
+
+
     Material Enemy;
 
 
@@ -20,36 +26,21 @@ public class GrowCondition : MonoBehaviour
 
     private void Update()
     {
-        if(transform.localScale.x <= 0)
+        // destroys enemy or player if scale is 0 or below
+        if (transform.localScale.x <= 0)
         {
-
-
             Destroy(gameObject);
             Debug.Log("destroyed BENE BENEDIKT KIRCHMEIER ");
-        }
-
-
-        // color for enemies that are bigger
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Enemy.color = Color.red;
-        }
-
-        // color for enemies that are smaller
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Enemy.color = Color.red;
         }
     }
 
 
-    
+
+    #region Player enemy collision, absorbing/growing/shrinking
     private void OnCollisionStay(Collision collision)
     {
 
-        
-       
-        //smaller
+        //smaller enemy, player grows
 
         if (transform.localScale.magnitude > collision.transform.localScale.magnitude && enemy == true)
         {
@@ -57,20 +48,23 @@ public class GrowCondition : MonoBehaviour
             collision.transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
         }
 
-        // bigger
+        // bigger enemy, player shrinks
         if (transform.localScale.magnitude < collision.transform.localScale.magnitude && enemy == true)
         {
             transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
             collision.transform.localScale += new Vector3(growScale, growScale, 0);
         }
-
+// debugging
         if (transform.localScale.magnitude < collision.transform.localScale.magnitude)
         {
             Debug.Log(transform.localScale.magnitude);
             Debug.Log(collision.transform.localScale.magnitude);
 
         }
-       
+        #endregion
+
+        #region Testing
+
         /*
         
         Debug.LogWarning("Collision!Collision");
@@ -86,7 +80,7 @@ public class GrowCondition : MonoBehaviour
             transform.localScale -= new Vector3(shrinkScale, shrinkScale, 0);
         }
         // */
-    } 
+    }
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -119,6 +113,6 @@ public class GrowCondition : MonoBehaviour
     }
     // */
 
-   
+    #endregion
 
 }
